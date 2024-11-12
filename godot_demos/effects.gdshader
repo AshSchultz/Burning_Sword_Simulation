@@ -19,8 +19,8 @@ void fragment() {
   vec3 world_position = world.xyz / world.w;
 
   // Visualize linear depth
-  ALBEDO.rgb = vec3(fract(linear_depth));
+  //ALBEDO.rgb = vec3(fract(linear_depth));
 
   // Visualize world coordinates
-  //ALBEDO.rgb = fract(world_position).xyz;
+  ALBEDO.rgb = fract(world_position).xyz;
 }
