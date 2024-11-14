@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bolf2m0tth0ht"]
+
+[ext_resource type="Texture2D" uid="uid://dytoqxydix7my" path="res://godot_demos/textures/y4qmz0a5.bmp" id="1_j7mvf"]
+[ext_resource type="Shader" path="res://godot_demos/Shaders/demo.gdshader" id="1_wkvdg"]
+[ext_resource type="Shader" path="res://godot_demos/Shaders/demo2.gdshader" id="3_46sjp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_siuw0"]
+shader = ExtResource("1_wkvdg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dofxb"]
+shader = ExtResource("3_46sjp")
+
+[node name="Custom_Post_Processing2d" type="Node"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(502, 292)
+texture = ExtResource("1_j7mvf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_siuw0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -15.0
+offset_right = 3.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+material = SubResource("ShaderMaterial_dofxb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -24.0
+offset_right = 18.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,11 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8jovntdj4wyj"]
+[gd_scene load_steps=4 format=3 uid="uid://c8jovntdj4wyj"]
 
 [ext_resource type="PackedScene" uid="uid://u3jjbs62xjup" path="res://scenes/Sword.tscn" id="1_0fvp8"]
 [ext_resource type="PackedScene" uid="uid://bu4yur0m1susg" path="res://scenes/fire_particles.tscn" id="2_owq6c"]
 
+[sub_resource type="Environment" id="Environment_v0el7"]
+background_mode = 1
+background_color = Color(0.118581, 0.118581, 0.118581, 1)
+background_energy_multiplier = 0.0
+
 [node name="Fire_Sword" type="Node3D"]
 
 [node name="Sword" parent="." instance=ExtResource("1_0fvp8")]
+transform = Transform3D(-0.0427475, -0.999086, -4.36714e-08, 0, -4.37114e-08, 1, -0.999086, 0.0427475, 1.86855e-09, 0.498413, 0.0564932, -0.290819)
 
-[node name="Node3D" parent="Sword" instance=ExtResource("2_owq6c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.36)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.51673, -0.0126648, -0.938922)
+
+[node name="Node3D" parent="." instance=ExtResource("2_owq6c")]
+transform = Transform3D(0.98795, -0.00908002, -0.154504, 0.0338155, 0.986823, 0.158233, 0.151032, -0.161551, 0.975239, -0.146498, -0.0510467, -0.2316)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v0el7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.217684, 0.823713, 0.523556, 0.484982, -0.556797, 0.674366, 0.846998, 0.107116, -0.520692, 0.498413, 0.0564932, -0.290819)
+light_energy = 0.25
+light_indirect_energy = 4.505
+light_volumetric_fog_energy = 0.0

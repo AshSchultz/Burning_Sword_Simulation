@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqxtv4x7s0hab"]
+
+[ext_resource type="Shader" path="res://godot_demos/Shaders/demo3.gdshader" id="1_x6vhl"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6irhb"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3tb3x"]
+render_priority = 0
+shader = ExtResource("1_x6vhl")
+shader_parameter/fov = 75.0
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_offset = Vector3(0, 0, 0)
+shader_parameter/density_threshold = 0.5
+shader_parameter/density_multiplier = 1.0
+shader_parameter/ambient_light = Vector3(1, 1, 1)
+shader_parameter/absorption_coef = 5e-06
+shader_parameter/scattering_coef = 0.02
+shader_parameter/vm_step_count = 100
+shader_parameter/bb_min = Vector3(-10, -10, -10)
+shader_parameter/bb_max = Vector3(10, 10, 10)
+
+[node name="advancedPP" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_6irhb")
+surface_material_override/0 = SubResource("ShaderMaterial_3tb3x")
