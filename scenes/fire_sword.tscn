@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8jovntdj4wyj"]
+
+[ext_resource type="PackedScene" uid="uid://u3jjbs62xjup" path="res://scenes/Sword.tscn" id="1_0fvp8"]
+[ext_resource type="PackedScene" uid="uid://bu4yur0m1susg" path="res://scenes/fire_particles.tscn" id="2_owq6c"]
+
+[node name="Fire_Sword" type="Node3D"]
+
+[node name="Sword" parent="." instance=ExtResource("1_0fvp8")]
+
+[node name="Node3D" parent="Sword" instance=ExtResource("2_owq6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.36)

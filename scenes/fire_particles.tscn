@@ -2,8 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://ngpybuhnm8bk" path="res://textures/fire_01.png" id="1_k7hrv"]
 [ext_resource type="Texture2D" uid="uid://butwkguynj4oq" path="res://Curves/color_curve.tres" id="2_1shfi"]
-[ext_resource type="Curve" uid="uid://d158y51lioonk" path="res://Curves/fire_scale_curve.tres" id="3_wn67a"]
+[ext_resource type="Shader" path="res://shaders/fire_particles.gdshader" id="2_ephew"]
 [ext_resource type="Texture2D" uid="uid://b5vecyp2r3k51" path="res://textures/smoke_07.png" id="4_2qbdl"]
+[ext_resource type="Shader" path="res://shaders/smoke_particles.gdshader" id="4_wt8pm"]
+[ext_resource type="Texture2D" uid="uid://xiyy1cqep6fu" path="res://Curves/smoke_color_gradient.tres" id="6_5mh5i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03sjl"]
 transparency = 1
@@ -17,31 +19,56 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="CurveTexture" id="CurveTexture_d1smx"]
-width = 512
-curve = ExtResource("3_wn67a")
+[sub_resource type="Curve" id="Curve_emqh6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.141593, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lufdw"]
-particle_flag_rotate_y = true
-emission_shape = 1
-emission_sphere_radius = 0.2
-angle_min = 1.07288e-05
-angle_max = 360.0
-direction = Vector3(0, 1, 0)
-spread = 0.0
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-angular_velocity_min = -1.60933e-05
-angular_velocity_max = 30.0
-gravity = Vector3(0, 0, 0)
-linear_accel_min = -2.23517e-06
-linear_accel_max = 4.0
-attractor_interaction_enabled = false
-scale_min = 3.0
-scale_max = 3.0
-scale_curve = SubResource("CurveTexture_d1smx")
-color = Color(1, 1, 0, 1)
-color_ramp = ExtResource("2_1shfi")
+[sub_resource type="CurveTexture" id="CurveTexture_1jd5x"]
+curve = SubResource("Curve_emqh6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_brlwg"]
+shader = ExtResource("2_ephew")
+shader_parameter/direction = Vector3(0, 1, 0)
+shader_parameter/spread = 0.0
+shader_parameter/flatness = 0.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/initial_linear_velocity_min = 1.0
+shader_parameter/initial_linear_velocity_max = 1.0
+shader_parameter/directional_velocity_min = 1.0
+shader_parameter/directional_velocity_max = 1.0
+shader_parameter/angular_velocity_min = -1.60933e-05
+shader_parameter/angular_velocity_max = 30.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/radial_velocity_min = null
+shader_parameter/radial_velocity_max = null
+shader_parameter/linear_accel_min = -2.23517e-06
+shader_parameter/linear_accel_max = 4.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/initial_angle_min = 1.07288e-05
+shader_parameter/initial_angle_max = 360.0
+shader_parameter/scale_min = 3.0
+shader_parameter/scale_max = 3.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/emission_sphere_radius = 0.2
+shader_parameter/color_value = Color(1, 1, 0, 1)
+shader_parameter/gravity = Vector3(0, -1e-06, 0)
+shader_parameter/color_ramp = ExtResource("2_1shfi")
+shader_parameter/scale_curve = SubResource("CurveTexture_1jd5x")
 
 [sub_resource type="QuadMesh" id="QuadMesh_7q1l6"]
 
@@ -58,35 +85,48 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id="Gradient_acskk"]
-offsets = PackedFloat32Array(0, 0.480331, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0.445135, 0.445135, 0.445135, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_s3dos"]
-gradient = SubResource("Gradient_acskk")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cufnl"]
-particle_flag_rotate_y = true
-emission_shape = 1
-emission_sphere_radius = 0.2
-angle_min = 1.07288e-05
-angle_max = 360.0
-direction = Vector3(0, 1, 0)
-spread = 0.0
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-angular_velocity_min = -1.60933e-05
-angular_velocity_max = 30.0
-gravity = Vector3(0, 0, 0)
-linear_accel_min = -2.23517e-06
-linear_accel_max = 4.0
-attractor_interaction_enabled = false
-scale_min = 2.5
-scale_max = 3.0
-color_ramp = SubResource("GradientTexture1D_s3dos")
-
-[sub_resource type="Environment" id="Environment_hltux"]
-background_energy_multiplier = 0.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hk57i"]
+shader = ExtResource("4_wt8pm")
+shader_parameter/direction = Vector3(0, 1, 0)
+shader_parameter/spread = 0.0
+shader_parameter/flatness = 0.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/initial_linear_velocity_min = 1.0
+shader_parameter/initial_linear_velocity_max = 1.0
+shader_parameter/directional_velocity_min = 1.0
+shader_parameter/directional_velocity_max = 1.0
+shader_parameter/angular_velocity_min = -1.60933e-05
+shader_parameter/angular_velocity_max = 30.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/radial_velocity_min = null
+shader_parameter/radial_velocity_max = null
+shader_parameter/linear_accel_min = -2.23517e-06
+shader_parameter/linear_accel_max = 4.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/initial_angle_min = 1.07288e-05
+shader_parameter/initial_angle_max = 360.0
+shader_parameter/scale_min = 2.5
+shader_parameter/scale_max = 3.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/emission_sphere_radius = 0.2
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/gravity = Vector3(0, -1e-06, 0)
+shader_parameter/color_ramp = ExtResource("6_5mh5i")
 
 [node name="Node3D" type="Node3D"]
 
@@ -97,7 +137,7 @@ gi_mode = 2
 amount = 64
 collision_base_size = 0.1
 trail_lifetime = 3.0
-process_material = SubResource("ParticleProcessMaterial_lufdw")
+process_material = SubResource("ShaderMaterial_brlwg")
 draw_pass_1 = SubResource("QuadMesh_7q1l6")
 
 [node name="Smoke" type="GPUParticles3D" parent="."]
@@ -108,9 +148,5 @@ amount = 32
 lifetime = 3.0
 collision_base_size = 0.1
 trail_lifetime = 3.0
-process_material = SubResource("ParticleProcessMaterial_cufnl")
+process_material = SubResource("ShaderMaterial_hk57i")
 draw_pass_1 = SubResource("QuadMesh_7q1l6")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.985736, 0.1683, 0, -0.1683, 0.985736, 0, 2.33819, 4.25841)
-environment = SubResource("Environment_hltux")
