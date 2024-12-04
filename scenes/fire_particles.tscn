@@ -1,124 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bu4yur0m1susg"]
+[gd_scene load_steps=3 format=3 uid="uid://bu4yur0m1susg"]
 
-[ext_resource type="PackedScene" uid="uid://ciixfyo1a0e6u" path="res://models/arming_sword_241012.glb" id="1_ff8no"]
-[ext_resource type="Texture2D" uid="uid://ngpybuhnm8bk" path="res://textures/fire_01.png" id="1_k7hrv"]
-[ext_resource type="Texture2D" uid="uid://butwkguynj4oq" path="res://Curves/color_curve.tres" id="2_1shfi"]
-[ext_resource type="Curve" uid="uid://d158y51lioonk" path="res://Curves/fire_scale_curve.tres" id="3_wn67a"]
-[ext_resource type="Texture2D" uid="uid://b5vecyp2r3k51" path="res://textures/smoke_07.png" id="4_2qbdl"]
+[ext_resource type="PackedScene" uid="uid://bnlv7kodb1o78" path="res://scenes/fire_sword.tscn" id="1_af8dk"]
 
 [sub_resource type="Environment" id="Environment_hltux"]
 background_energy_multiplier = 0.0
 ambient_light_color = Color(0.154876, 0.154876, 0.154876, 1)
 ambient_light_energy = 2.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mmlw"]
-transparency = 1
-blend_mode = 1
-albedo_color = Color(1, 0, 0, 0.113725)
-emission_enabled = true
-emission = Color(0.870387, 2.88785e-07, 1.2514e-06, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03sjl"]
-render_priority = 2
-transparency = 1
-blend_mode = 1
-diffuse_mode = 2
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_k7hrv")
-emission_enabled = true
-emission = Color(1, 1, 0, 1)
-emission_operator = 1
-ao_enabled = true
-refraction_scale = -1.0
-disable_receive_shadows = true
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="Curve" id="Curve_2mm8o"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.456869, 1), 0.0, 0.0, 0, 0, Vector2(0.99361, 1), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_c8l13"]
-curve = SubResource("Curve_2mm8o")
-
-[sub_resource type="CurveTexture" id="CurveTexture_d1smx"]
-width = 512
-curve = ExtResource("3_wn67a")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lufdw"]
-particle_flag_align_y = true
-particle_flag_rotate_y = true
-emission_shape = 3
-emission_box_extents = Vector3(0.1, 0.1, 1.245)
-angle_min = 1.07288e-05
-angle_max = 360.0
-direction = Vector3(0, 0, 0)
-spread = 0.0
-angular_velocity_min = -1.60933e-05
-angular_velocity_max = 30.0
-gravity = Vector3(0, 9.81, 0)
-linear_accel_min = -2.23517e-06
-linear_accel_max = -2.23517e-06
-scale_min = 1.5
-scale_max = 1.5
-scale_curve = SubResource("CurveTexture_d1smx")
-color = Color(1, 1, 0, 1)
-color_ramp = ExtResource("2_1shfi")
-emission_curve = SubResource("CurveTexture_c8l13")
-
-[sub_resource type="QuadMesh" id="QuadMesh_7q1l6"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fc2q"]
-render_priority = 1
-transparency = 1
-blend_mode = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("4_2qbdl")
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="Gradient" id="Gradient_t6aww"]
-offsets = PackedFloat32Array(0, 0.280702, 0.940351)
-colors = PackedColorArray(1, 1, 1, 0, 0.633757, 0.633757, 0.633757, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_o75fi"]
-gradient = SubResource("Gradient_t6aww")
-
-[sub_resource type="Curve" id="Curve_x5o6x"]
-bake_resolution = 150
-_data = [Vector2(0.367412, 0.00636947), 0.0, 2.48805, 0, 1, Vector2(0.766773, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_gedp3"]
-width = 512
-curve = SubResource("Curve_x5o6x")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s0tyt"]
-particle_flag_align_y = true
-particle_flag_rotate_y = true
-emission_shape = 3
-emission_box_extents = Vector3(0.1, 0.165, 1.245)
-angle_min = 1.07288e-05
-angle_max = 360.0
-direction = Vector3(0, 0, 0)
-spread = 0.0
-angular_velocity_min = -1.60933e-05
-angular_velocity_max = 30.0
-gravity = Vector3(0, 4, 0)
-linear_accel_min = -2.23517e-06
-linear_accel_max = -2.23517e-06
-scale_min = 1.5
-scale_max = 1.5
-scale_curve = SubResource("CurveTexture_gedp3")
-color = Color(0.344076, 0.344076, 0.344076, 1)
-color_ramp = SubResource("GradientTexture1D_o75fi")
 
 [node name="Node3D" type="Node3D"]
 
@@ -126,55 +13,7 @@ color_ramp = SubResource("GradientTexture1D_o75fi")
 transform = Transform3D(1, 0, 0, 0, 0.985736, 0.1683, 0, -0.1683, 0.985736, 0, 2.33819, 4.25841)
 environment = SubResource("Environment_hltux")
 
-[node name="Fire_Sword" type="Node3D" parent="."]
-transform = Transform3D(0.364162, -0.931336, 0, 0.931336, 0.364162, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="Sword" parent="Fire_Sword" instance=ExtResource("1_ff8no")]
-transform = Transform3D(11.055, 0, 0, 0, -4.83229e-07, 11.055, 0, -11.055, -4.83229e-07, 0, -26.314, -0.695)
-
-[node name="Box1399_01 - Defaultwef_0" parent="Fire_Sword/Sword/Sketchfab_model/e3e59c11977b44c0bb91a0e6d0cfc8c3_fbx/RootNode/Box1399" index="0"]
-ignore_occlusion_culling = true
-gi_mode = 2
-
-[node name="Box1400_01 - Defaultwef_0" parent="Fire_Sword/Sword/Sketchfab_model/e3e59c11977b44c0bb91a0e6d0cfc8c3_fbx/RootNode/Box1400" index="0"]
-material_overlay = SubResource("StandardMaterial3D_5mmlw")
-gi_mode = 2
-
-[node name="Box1401_01 - Defaultwef_0" parent="Fire_Sword/Sword/Sketchfab_model/e3e59c11977b44c0bb91a0e6d0cfc8c3_fbx/RootNode/Box1401" index="0"]
-gi_mode = 2
-
-[node name="Box1402_01 - Default_0" parent="Fire_Sword/Sword/Sketchfab_model/e3e59c11977b44c0bb91a0e6d0cfc8c3_fbx/RootNode/Box1402/Object_10" index="0"]
-gi_mode = 2
-
-[node name="Cylinder1000_01 - Defaultwef_0" parent="Fire_Sword/Sword/Sketchfab_model/e3e59c11977b44c0bb91a0e6d0cfc8c3_fbx/RootNode/Cylinder1000" index="0"]
-gi_mode = 2
-gi_lightmap_scale = 2
-
-[node name="Fire" type="GPUParticles3D" parent="Fire_Sword/Sword"]
-transform = Transform3D(0.27137, -1.16415e-10, -3.72529e-09, -2.79397e-09, 0.271371, -8.3819e-09, 1.11759e-08, 6.51926e-09, 0.271371, -0.00290106, -0.0661383, 2.89248)
-material_override = SubResource("StandardMaterial3D_03sjl")
-gi_mode = 2
-gi_lightmap_scale = 2
-amount = 1000
-collision_base_size = 0.1
-draw_order = 2
-trail_lifetime = 0.01
-process_material = SubResource("ParticleProcessMaterial_lufdw")
-draw_pass_1 = SubResource("QuadMesh_7q1l6")
-
-[node name="Smoke" type="GPUParticles3D" parent="Fire_Sword/Sword"]
-transform = Transform3D(0.27137, -1.16415e-10, -3.72529e-09, -2.79397e-09, 0.271371, -8.3819e-09, 1.11759e-08, 6.51926e-09, 0.271371, -0.00290106, -0.0661383, 2.89248)
-material_override = SubResource("StandardMaterial3D_0fc2q")
-gi_mode = 2
-amount = 1000
-lifetime = 1.87
-collision_base_size = 0.1
-draw_order = 2
-trail_lifetime = 3.27
-process_material = SubResource("ParticleProcessMaterial_s0tyt")
-draw_pass_1 = SubResource("QuadMesh_7q1l6")
+[node name="Fire_Sword" parent="." instance=ExtResource("1_af8dk")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.730162, 0.683274, 0, -0.58696, 0.627239, 0.511908, 0.349773, -0.373776, 0.85904, 0, 0, 0)
-
-[editable path="Fire_Sword/Sword"]
