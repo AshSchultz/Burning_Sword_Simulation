@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://5wkmmc64hnpd"]
+[gd_scene load_steps=5 format=3 uid="uid://5wkmmc64hnpd"]
+
+[ext_resource type="Script" path="res://hold.gd" id="1_gxxiw"]
 
 [sub_resource type="GDScript" id="GDScript_6oatf"]
 script/source = "class_name Player extends CharacterBody3D
@@ -19,8 +21,8 @@ var move_dir: Vector2 # Input direction for movement
 var look_dir: Vector2 # Input direction for look/aim
 
 var walk_vel: Vector3 # Walking velocity 
-var grav_vel: Vector3 # Gravity velocity 
-var jump_vel: Vector3 # Jumping velocity
+
+var held_object = null
 
 @onready var camera: Camera3D = $Camera
 
@@ -38,8 +40,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		$\"../Settings\".visible = !$\"../Settings\".visible 
 		release_mouse()
 
+		#if held_object:
+			#drop_object()
+		#else:
+			#pick_up_object()
+
 func _physics_process(delta: float) -> void:
-	if mouse_captured: _handle_joypad_camera_rotation(delta)
+	if mouse_captured: 
+		_handle_joypad_camera_rotation(delta)
+	if Input.is_action_just_pressed(\"pickup\"):
+		$\"../Fire_Sword\".set
 	velocity = _walk(delta)
 	move_and_slide()
 
@@ -73,6 +83,30 @@ func _walk(delta: float) -> Vector3:
 func _on_exit_pressed() -> void:
 	capture_mouse()
 	$\"../Settings\".visible = !$\"../Settings\".visible 
+
+#func pick_up_object():
+	#var space_state = get_world_3d().direct_space_state  # Use get_world_2d() for 2D
+	#var query = PhysicsRayQueryParameters3D.new()  # Use `PhysicsPointQueryParameters2D` for 2D
+	#query.from = camera.global_position
+	#query.to = query.from + (-camera.transform.basis.z) * 2 # Length of ray cast
+	#query.collide_with_areas = true
+	#query.exclude = [self]
+	#
+	#print(query.from)
+	#print(query.to)
+	#var result = space_state.intersect_ray(query)
+	#if result and result.collider:
+		#held_object = result.collider
+		#print(held_object.name)
+		#held_object.set_parent(self)  # Attach to the player
+		#held_object.global_transform.origin = global_transform.origin  # Reposition near player
+		#print(\"Picked up object: \", held_object.name)
+	#
+#func drop_object():
+	#if held_object:
+		#print(\"Dropped object: \", held_object.name)
+		#held_object.set_parent(get_parent())  # Detach from the player
+		#held_object = null
 "
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_juve1"]
@@ -89,3 +123,10 @@ shape = SubResource("CapsuleShape3D_juve1")
 mesh = SubResource("CapsuleMesh_t2dxs")
 
 [node name="Camera" type="Camera3D" parent="."]
+
+[node name="Hold" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.289355, -1.88228)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.889287, 0)
+script = ExtResource("1_gxxiw")

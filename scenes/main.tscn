@@ -19,9 +19,7 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 
 [node name="Player" parent="." instance=ExtResource("1_ci4ie")]
-transform = Transform3D(3.39197, 0, 0, 0, 3.39197, 0, 0, 0, 3.39197, 3.01667, 3.15199, 4.9555)
-
-[node name="Fire_Sword" parent="." instance=ExtResource("2_rrbhc")]
+transform = Transform3D(1.16618, 0, 0, 0, 1.14226, 0, 0, 0, 1.4002, 3.01667, 2.25529, 4.9555)
 
 [node name="Settings" type="CanvasLayer" parent="."]
 visible = false
@@ -35,6 +33,8 @@ text = "Enable wind"
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Exit"
+
+[node name="Fire_Sword" parent="." groups=["grab"] instance=ExtResource("2_rrbhc")]
 
 [connection signal="toggled" from="Settings/CheckButton" to="Fire_Sword" method="_on_check_button_toggled"]
 [connection signal="pressed" from="Settings/exit" to="Player" method="_on_exit_pressed"]

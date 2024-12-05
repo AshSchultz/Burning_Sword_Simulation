@@ -8,11 +8,10 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
-	previous_state = !previous_state
-	$Sword/Fire.process_material.turbulence_enabled = previous_state
-	$Sword/Smoke.process_material.turbulence_enabled = previous_state
+	$Sword/Fire.process_material.turbulence_enabled = toggled_on
+	$Sword/Smoke.process_material.turbulence_enabled = toggled_on
