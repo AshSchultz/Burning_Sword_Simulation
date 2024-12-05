@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu4yur0m1susg"]
+[gd_scene load_steps=5 format=3 uid="uid://bu4yur0m1susg"]
 
 [ext_resource type="PackedScene" uid="uid://5wkmmc64hnpd" path="res://scenes/player.tscn" id="1_ci4ie"]
 [ext_resource type="PackedScene" uid="uid://dir7skusga5fw" path="res://scenes/ground.tscn" id="1_fmn77"]
 [ext_resource type="PackedScene" uid="uid://bnlv7kodb1o78" path="res://scenes/fire_sword.tscn" id="2_rrbhc"]
+
+[sub_resource type="Environment" id="Environment_fv8iu"]
+background_mode = 1
 
 [node name="main" type="Node3D"]
 
@@ -19,7 +22,7 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 
 [node name="Player" parent="." instance=ExtResource("1_ci4ie")]
-transform = Transform3D(1.16618, 0, 0, 0, 1.14226, 0, 0, 0, 1.4002, 3.01667, 2.25529, 4.9555)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01667, 2.25529, 4.9555)
 
 [node name="Settings" type="CanvasLayer" parent="."]
 visible = false
@@ -35,6 +38,9 @@ offset_bottom = 8.0
 text = "Exit"
 
 [node name="Fire_Sword" parent="." groups=["grab"] instance=ExtResource("2_rrbhc")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fv8iu")
 
 [connection signal="toggled" from="Settings/CheckButton" to="Fire_Sword" method="_on_check_button_toggled"]
 [connection signal="pressed" from="Settings/exit" to="Player" method="_on_exit_pressed"]
