@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bnlv7kodb1o78"]
+[gd_scene load_steps=21 format=3 uid="uid://bnlv7kodb1o78"]
 
 [ext_resource type="PackedScene" uid="uid://ciixfyo1a0e6u" path="res://models/arming_sword_241012.glb" id="1_0fe8m"]
+[ext_resource type="Script" path="res://scripts/fire_sword.gd" id="1_r4aar"]
 [ext_resource type="Texture2D" uid="uid://ngpybuhnm8bk" path="res://textures/fire_01.png" id="2_1ktqn"]
 [ext_resource type="Texture2D" uid="uid://butwkguynj4oq" path="res://Curves/color_curve.tres" id="3_ioe37"]
 [ext_resource type="Curve" uid="uid://d158y51lioonk" path="res://Curves/fire_scale_curve.tres" id="4_6hjkp"]
@@ -63,6 +64,7 @@ scale_curve = SubResource("CurveTexture_d1smx")
 color = Color(1, 1, 0, 1)
 color_ramp = ExtResource("3_ioe37")
 emission_curve = SubResource("CurveTexture_c8l13")
+turbulence_noise_strength = 7.71
 
 [sub_resource type="QuadMesh" id="QuadMesh_7q1l6"]
 
@@ -115,8 +117,12 @@ scale_curve = SubResource("CurveTexture_gedp3")
 color = Color(0.344076, 0.344076, 0.344076, 1)
 color_ramp = SubResource("GradientTexture1D_o75fi")
 
-[node name="Fire_Sword" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_6lti7"]
+size = Vector3(1, 10.2321, 1)
+
+[node name="Fire_Sword" type="RigidBody3D"]
 transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_r4aar")
 
 [node name="Sword" parent="." instance=ExtResource("1_0fe8m")]
 transform = Transform3D(11.055, 0, 0, 0, -4.83229e-07, 11.055, 0, -11.055, -4.83229e-07, 0, -26.314, -0.695)
@@ -147,7 +153,6 @@ gi_lightmap_scale = 2
 amount = 1000
 collision_base_size = 0.1
 draw_order = 2
-trail_lifetime = 0.01
 process_material = SubResource("ParticleProcessMaterial_lufdw")
 draw_pass_1 = SubResource("QuadMesh_7q1l6")
 
@@ -159,8 +164,11 @@ amount = 1000
 lifetime = 1.87
 collision_base_size = 0.1
 draw_order = 2
-trail_lifetime = 3.27
 process_material = SubResource("ParticleProcessMaterial_s0tyt")
 draw_pass_1 = SubResource("QuadMesh_7q1l6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.61603, 4.23516e-21)
+shape = SubResource("BoxShape3D_6lti7")
 
 [editable path="Sword"]

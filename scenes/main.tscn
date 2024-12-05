@@ -1,22 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpa8jsspxlicg"]
+[gd_scene load_steps=4 format=3 uid="uid://bu4yur0m1susg"]
 
 [ext_resource type="PackedScene" uid="uid://5wkmmc64hnpd" path="res://scenes/player.tscn" id="1_ci4ie"]
+[ext_resource type="PackedScene" uid="uid://dir7skusga5fw" path="res://scenes/ground.tscn" id="1_fmn77"]
+[ext_resource type="PackedScene" uid="uid://bnlv7kodb1o78" path="res://scenes/fire_sword.tscn" id="2_rrbhc"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_np3nh"]
-size = Vector3(7.4615, 1, 8.47067)
+[node name="main" type="Node3D"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_6aswm"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.730162, 0.683274, 0, -0.58696, 0.627239, 0.511908, 0.349773, -0.373776, 0.85904, 0, 0, 0)
 
-[node name="Main" type="Node3D"]
-
-[node name="Ground" type="RigidBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("BoxShape3D_np3nh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(7.4615, 0, 0, 0, 1, 0, 0, 0, 8.47067, 0, 0, 0)
-mesh = SubResource("BoxMesh_6aswm")
+[node name="Ground" parent="." instance=ExtResource("1_fmn77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.958448, 0)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 
 [node name="Player" parent="." instance=ExtResource("1_ci4ie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56174, 2.34615)
+transform = Transform3D(3.39197, 0, 0, 0, 3.39197, 0, 0, 0, 3.39197, 3.01667, 3.15199, 4.9555)
+
+[node name="Fire_Sword" parent="." instance=ExtResource("2_rrbhc")]
+
+[node name="Settings" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="CheckButton" type="CheckButton" parent="Settings"]
+offset_right = 130.0
+offset_bottom = 76.0
+text = "Enable wind"
+
+[node name="exit" type="Button" parent="Settings"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Exit"
+
+[connection signal="toggled" from="Settings/CheckButton" to="Fire_Sword" method="_on_check_button_toggled"]
+[connection signal="pressed" from="Settings/exit" to="Player" method="_on_exit_pressed"]
