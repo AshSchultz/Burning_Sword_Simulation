@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dir7skusga5fw"]
+
+[ext_resource type="Texture2D" uid="uid://dw8tniy8emkyn" path="res://textures/dungeon_wall.jpg" id="1_aqemd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_np3nh"]
+size = Vector3(36.047, 1, 43.511)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_if1l8"]
+detail_enabled = true
+detail_albedo = ExtResource("1_aqemd")
+
+[sub_resource type="BoxMesh" id="BoxMesh_6aswm"]
+size = Vector3(36.047, 1, 43.511)
+
+[node name="Ground" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_np3nh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_if1l8")
+mesh = SubResource("BoxMesh_6aswm")

@@ -1,0 +1,6 @@
+Sword model was taken from:
+https://skfb.ly/prJE6
+Fire and smoke textures were taken from:
+https://www.kenney.nl/assets/particle-pack
+Ground texture was taken from:
+https://www.freepik.com/free-photo/stone-texture-background_1118519.htm#fromView=keyword&page=1&position=7&uuid=488f3513-4016-4a79-bc7a-91e7381cc3eb

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://5wkmmc64hnpd"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_yuqhs"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_juve1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t2dxs"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_yuqhs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_juve1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_t2dxs")
+
+[node name="Camera" type="Camera3D" parent="."]
+
+[node name="hand" type="Marker3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.59286)
+
+[node name="interaction" type="RayCast3D" parent="Camera"]
+target_position = Vector3(0, 0, -5)
+collide_with_areas = true
