@@ -44,3 +44,6 @@ environment = SubResource("Environment_fv8iu")
 
 [connection signal="toggled" from="Settings/CheckButton" to="Fire_Sword" method="_on_check_button_toggled"]
 [connection signal="pressed" from="Settings/exit" to="Player" method="_on_exit_pressed"]
+
+[editable path="Fire_Sword"]
+[editable path="Fire_Sword/Sword"]

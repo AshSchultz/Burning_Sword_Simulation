@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bnlv7kodb1o78"]
+[gd_scene load_steps=22 format=3 uid="uid://bnlv7kodb1o78"]
 
 [ext_resource type="PackedScene" uid="uid://ciixfyo1a0e6u" path="res://models/arming_sword_241012.glb" id="1_0fe8m"]
 [ext_resource type="Script" path="res://scripts/fire_sword.gd" id="1_r4aar"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://butwkguynj4oq" path="res://Curves/color_curve.tres" id="3_ioe37"]
 [ext_resource type="Curve" uid="uid://d158y51lioonk" path="res://Curves/fire_scale_curve.tres" id="4_6hjkp"]
 [ext_resource type="Texture2D" uid="uid://b5vecyp2r3k51" path="res://textures/smoke_07.png" id="5_1u4b4"]
+[ext_resource type="Texture2D" uid="uid://dro0he8r5rc48" path="res://Curves/wind_curve_fire.tres" id="6_pg4t8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mmlw"]
 transparency = 1
@@ -65,6 +66,7 @@ color = Color(1, 1, 0, 1)
 color_ramp = ExtResource("3_ioe37")
 emission_curve = SubResource("CurveTexture_c8l13")
 turbulence_noise_strength = 7.71
+turbulence_influence_over_life = ExtResource("6_pg4t8")
 
 [sub_resource type="QuadMesh" id="QuadMesh_7q1l6"]
 
@@ -116,6 +118,11 @@ scale_max = 1.5
 scale_curve = SubResource("CurveTexture_gedp3")
 color = Color(0.344076, 0.344076, 0.344076, 1)
 color_ramp = SubResource("GradientTexture1D_o75fi")
+turbulence_enabled = true
+turbulence_noise_strength = 0.0
+turbulence_noise_speed_random = 0.0
+turbulence_influence_max = 0.258
+turbulence_influence_over_life = ExtResource("6_pg4t8")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6lti7"]
 size = Vector3(1, 10.2321, 1)
