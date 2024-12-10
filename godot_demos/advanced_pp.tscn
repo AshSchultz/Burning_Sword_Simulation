@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0u5b3bbdy83u"]
+
+[ext_resource type="Shader" path="res://godot_demos/Shaders/effects.gdshader" id="1_wk6b2"]
+[ext_resource type="PackedScene" uid="uid://dotjq2qkjssuk" path="res://models/Sword.glb" id="2_wuxyj"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_xuqm3"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_273r7"]
+render_priority = 0
+shader = ExtResource("1_wk6b2")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+mesh = SubResource("QuadMesh_xuqm3")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_273r7")
+
+[node name="Sword" parent="." instance=ExtResource("2_wuxyj")]
+transform = Transform3D(1, 0, 0, 0, 0.944692, 0.32796, 0, -0.32796, 0.944692, -0.658096, -1.04729, -0.547754)
