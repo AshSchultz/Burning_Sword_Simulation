@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://bnlv7kodb1o78"]
 
-[ext_resource type="PackedScene" uid="uid://ciixfyo1a0e6u" path="res://models/arming_sword_241012.glb" id="1_0fe8m"]
+[ext_resource type="PackedScene" uid="uid://ck7qnaudaoxwx" path="res://models/arming_sword_241012.glb" id="1_0fe8m"]
 [ext_resource type="Script" path="res://scripts/fire_sword.gd" id="1_r4aar"]
 [ext_resource type="Texture2D" uid="uid://ngpybuhnm8bk" path="res://textures/fire_01.png" id="2_1ktqn"]
 [ext_resource type="Texture2D" uid="uid://butwkguynj4oq" path="res://Curves/color_curve.tres" id="3_ioe37"]
